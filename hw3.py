@@ -127,6 +127,7 @@ def firstattack(unknown):
         s = ruleonedoc(i,count)
         notcracked = cracked(unknown,s)
         if(notcracked == False):
+          return False
           print("the password that was cracked was" + s)
           count = 100
           done = True
@@ -137,6 +138,7 @@ def firstattack(unknown):
       if(done == True):
         break
       count = 0
+  return True
 
 
 def secondattack(unknown):
@@ -158,6 +160,7 @@ def secondattack(unknown):
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
+      return False
       print("Password Cracked "  + gg)
       break
     fifthlayer = fifthlayer + 1
@@ -178,7 +181,7 @@ def secondattack(unknown):
               #notfound = true
 
     #crackedss = True
-  
+  return True
 
 def encodeFor2nd(f,s,t,fo,fi):
   if(f == 0):
@@ -291,11 +294,12 @@ def thirdattack(unknown):
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
+      return False
       print("Password Cracked "  + gg)
       break
     if(fourthl == 5):
       break
-    
+  return True  
 
 def encodeforthird(o,t,th,f):
   if(o == 0):
@@ -353,8 +357,10 @@ def fourthattack(unknown):
     #print(i)
     correct = cracked(unknown,i)
     if(correct == False):
+      return False
       print("PAssword is cracked " + i)
       break
+  return True
       
 
 def fifthattack(unknown):
@@ -366,9 +372,11 @@ def fifthattack(unknown):
     correct = cracked(unknown,str(number))
     
     if(correct == False):
+      return False
       print("PAssword is cracked " + j)
       break
     number = number + 1
+  return True
 
 def sixthattack(unknown):
   correct = True
@@ -376,9 +384,33 @@ def sixthattack(unknown):
     #print(i)
     correct = cracked(unknown,i)
     if(correct == False):
+      return False
       print("PAssword is cracked " + i)
    
 #Main Main Main
+
+def runAllAttacksAtOnce(): 
+  count = 1 
+  userTracker = 0
+  temporary = len(rawdata)
+  print(temporary) 
+  while(temporary > count):
+    PasswordHacked = True
+    #print(rawdata[count])
+    print("\n")
+    #print(rawdata[userTracker])
+    print("\n")
+    PasswordHacked = firstattack(rawdata[1])
+    if(PasswordHacked == False):
+      print("CRACKED CRACKED CRACKED")
+
+    userTracker = userTracker + 3  
+    count = count + 3
+    
+def writeout(): 
+  print("Just Temporary")
+
+
 def main():
     #f = open("crackme.txt")
     #text = f.readlines()
@@ -389,36 +421,36 @@ def main():
     
     #f.close
     grabTheFile()
-    printarray(rawdata)
+    #printarray(rawdata)
     getdictionary()
     #print(encode("Puzzles4"))
     dictionaryAttack()
     #print(rawdata[1])
     
-
-    firstattack(rawdata[1])
+    runAllAttacksAtOnce()
+   # firstattack(rawdata[1])
     #print(encode("~0011"))
 
     #print(rawdata[4])
-    secondattack(rawdata[4])
+    #secondattack(rawdata[4])
     #print(rawdata[7])
     #getdictionary()
     #print(encode("programming"))
-    sixthattack(rawdata[10])
+    #sixthattack(rawdata[10])
     #print(encode("93439"))
     #print("\n")
     #print(rawdata[13])
     #print(rawdata[9])
     ##print("\n")
     #print(rawdata[8])
-    print(rawdata[7])
-    fourthattack(rawdata[7])
+    #print(rawdata[7])
+    #fourthattack(rawdata[7])
     #print("\n")
     #print(rawdata[5])
-    fifthattack(rawdata[13])
+    #fifthattack(rawdata[13])
     #print(encode("****"))
     #print(rawdata[16])
-    thirdattack(rawdata[16])
+    #thirdattack(rawdata[16])
     
     #print(svnLetters)
     #print(dictionary[0].capitalize())
