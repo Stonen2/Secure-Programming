@@ -60,35 +60,38 @@ def dictionaryAttack():
       svnLetters.append(a)
 
 def ruleonedoc(s,count):
-  s.capitalize()
+  s = s.capitalize()
   if count == 0:
-    s + 0
+   s = s + '0'
   elif count == 1:
-    s + 1
+   s= s + '1'
   elif count ==2:
-    s + 2
+    s= s + '2'
   elif count == 3: 
-    s + 3
+    s=s + '3'
   elif count == 4: 
-    s+4 
+    s=s+'4' 
   elif count == 5: 
-    s + 5
+    s=s + '5'
   elif count == 6: 
-    s + 6
+    s=s + '6'
   elif count == 7: 
-    s+ 7
+    s=s+ '7'
   elif count == 8: 
-    s + 8
-  else: 
-    s+ 9
+    s=s + '8'
+  elif count == 9: 
+    s=s+ '9'
+  print(s)
   return s
   
   
 
 def cracked(unknown, known): 
   if(encode(known) == unknown):
-      print("SUCCESS")
-
+      print("YOu have cracked a password")
+      return False
+  else: 
+    return True 
 
 #Prints the given array Nothin special 
 def printarray(list):
@@ -107,11 +110,26 @@ def grabTheFile():
             rawdata.append(temp[3])
             
             #rawdata.append(line)
-def firstattack():
-  count = 0: 
+def decode(ha):
+  m = hashlib.sha256()
+  ha.decode()
+  return ha
+def firstattack(unknown):
+  count = 0
   notcracked = True
   while(notcracked == True):
     
+    for i in svnLetters:
+      while(count < 10):
+        s = ruleonedoc(i,count)
+        notcracked = cracked(unknown,s)
+        if(notcracked == False):
+          #print(s)
+          a = decode(s)
+          print(a)
+        count = count + 1 
+      count = 0
+
 
 #Main Main Main
 def main():
@@ -128,7 +146,9 @@ def main():
     getdictionary()
     #print(encode("Puzzles4"))
     dictionaryAttack()
-
+    #print(rawdata[1])
+    
+    firstattack(rawdata[1])
     #print(svnLetters)
     #print(dictionary[0].capitalize())
 
