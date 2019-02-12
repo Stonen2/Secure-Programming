@@ -150,30 +150,34 @@ def secondattack(unknown):
   #gg = encodeFor2nd(0,0,0,0,0)
   #print(gg)
   while(crackedss == False):
+    if(firstlayer == 5):
+      crackedss = True
+      break
     gg = encodeFor2nd(firstlayer,secondlayer,thirdlayer,fourthlayer,fifthlayer)
     print(gg)
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
       print("Password Cracked "  + gg)
-    firstlayer = firstlayer + 1
-    if(firstlayer == 10):
-      secondlayer = secondlayer + 1
-      firstlayer = 0
-      if(secondlayer == 10):
+      break
+    fifthlayer = fifthlayer + 1
+    if(fifthlayer == 10):
+      fourthlayer = fourthlayer + 1
+      fifthlayer = 0
+      if(fourthlayer == 10):
         thirdlayer = thirdlayer + 1
-        secondlayer = 0
+        fourthlayer = 0
         if(thirdlayer == 10):
-          fourthlayer = fourthlayer + 1
+          secondlayer = secondlayer + 1
           thirdlayer = 0
-          if(fourthlayer == 10):
-            fifthlayer = fifthlayer + 1
-            fourthlayer = 0
-            if(fifthlayer == 5):
+          if(secondlayer == 10):
+            firstlayer = firstlayer + 1
+            secondlayer = 0
+            if(firstlayer == 5):
               break
               #notfound = true
 
-    crackedss = True
+    #crackedss = True
   
 
 def encodeFor2nd(f,s,t,fo,fi):
@@ -186,7 +190,7 @@ def encodeFor2nd(f,s,t,fo,fi):
   elif(f == 3):
     a = "#"
   if(s ==0):
-    b =" 0"
+    b = "0"
   elif(s ==1):
     b = "1"
   elif(s ==2):
@@ -267,7 +271,9 @@ def encodeFor2nd(f,s,t,fo,fi):
     e = "8" 
   elif(fi ==9):
     e = "9" 
-  return a + b + c + d + e
+  g = a + b + c + d + e
+  print(g)
+  return g
 
 
 
@@ -293,6 +299,8 @@ def main():
     
 
     firstattack(rawdata[1])
+    #print(encode("~0011"))
+
     #print(rawdata[4])
     secondattack(rawdata[4])
     #print(svnLetters)
@@ -314,4 +322,3 @@ def main():
 
 
 main()
-
