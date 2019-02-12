@@ -154,7 +154,7 @@ def secondattack(unknown):
       crackedss = True
       break
     gg = encodeFor2nd(firstlayer,secondlayer,thirdlayer,fourthlayer,fifthlayer)
-    print(gg)
+    #print(gg)
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
@@ -272,14 +272,31 @@ def encodeFor2nd(f,s,t,fo,fi):
   elif(fi ==9):
     e = "9" 
   g = a + b + c + d + e
-  print(g)
+  #print(g)
   return g
 
 
+def fifthattack(unknown):
+  correct = True
+  number = 0
+  while(number < 999999):
+    j = str(number)
+    #print(i)
+    correct = cracked(unknown,str(number))
+    
+    if(correct == False):
+      print("PAssword is cracked " + j)
+      break
+    number = number + 1
 
-
-
-
+def sixthattack(unknown):
+  correct = True
+  for i in dictionary: 
+    #print(i)
+    correct = cracked(unknown,i)
+    if(correct == False):
+      print("PAssword is cracked " + i)
+   
 #Main Main Main
 def main():
     #f = open("crackme.txt")
@@ -303,6 +320,14 @@ def main():
 
     #print(rawdata[4])
     secondattack(rawdata[4])
+    print(rawdata[7])
+    #getdictionary()
+    #print(encode("programming"))
+    sixthattack(rawdata[10])
+    #print(encode("93439"))
+    #print("\n")
+    #print(rawdata[13])
+    fifthattack(rawdata[13])
     #print(svnLetters)
     #print(dictionary[0].capitalize())
 
