@@ -36,7 +36,8 @@ svnLetters = list()
   #  print("   \n")
 
   # print(uncrack)
-
+def runallAttacks():
+  print("Swag on Full Attack")
 
 def encode(s):
   #print(s)
@@ -61,6 +62,7 @@ def dictionaryAttack():
 
 def ruleonedoc(s,count):
   s = s.capitalize()
+
   if count == 0:
    s = s + '0'
   elif count == 1:
@@ -81,7 +83,7 @@ def ruleonedoc(s,count):
     s=s + '8'
   elif count == 9: 
     s=s+ '9'
-  print(s)
+  #print(s)
   return s
   
   
@@ -110,13 +112,14 @@ def grabTheFile():
             rawdata.append(temp[3])
             
             #rawdata.append(line)
-def decode(ha):
+def decode(s):
   m = hashlib.sha256()
-  ha.decode()
-  return ha
+  s.decode()
+  return s
 def firstattack(unknown):
   count = 0
   notcracked = True
+  done = False
   while(notcracked == True):
     
     for i in svnLetters:
@@ -124,10 +127,15 @@ def firstattack(unknown):
         s = ruleonedoc(i,count)
         notcracked = cracked(unknown,s)
         if(notcracked == False):
-          #print(s)
-          a = decode(s)
-          print(a)
+          print("the password that was cracked was" + s)
+          count = 100
+          done = True
+          break
+          #a = decode(s)
+          #print()
         count = count + 1 
+      if(done == True):
+        break
       count = 0
 
 
@@ -148,6 +156,7 @@ def main():
     dictionaryAttack()
     #print(rawdata[1])
     
+
     firstattack(rawdata[1])
     #print(svnLetters)
     #print(dictionary[0].capitalize())
