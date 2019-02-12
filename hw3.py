@@ -139,6 +139,73 @@ def firstattack(unknown):
       count = 0
 
 
+def secondattack():
+  firstlayer = 0
+  secondlayer = 0
+  thirdlayer = 0 
+  fourthlayer = 0
+  fifthlayer = 0 
+  cracked = False
+  while(cracked = False):
+    
+
+    cracked = True
+
+def encodeFor2nd(f,s,t,fo,fi):
+  if(f == 0):
+    a = "*"
+  elif (f ==1):
+    a = "~"
+  elif (f ==2):
+    a = "!"
+  elif(f == 3):
+    a = "#"
+  if(s ==0):
+    b = 0
+  elif(s ==1):
+    b = 1
+  elif(s ==2):
+    b = 2
+  elif(s ==3):
+    b = 3
+  elif(s ==4):
+    b = 4
+  elif(s ==5):
+    b = 5
+  elif(s ==6):
+    b = 6
+  elif(s ==7):
+    b = 7
+  elif(s ==8):
+    b = 8 
+  elif(s ==9):
+    b = 9 
+  if(t ==0):
+    c = 0
+  elif(t ==1):
+    c = 1
+  elif(t ==2):
+    c = 2
+  elif(t ==3):
+    c = 3
+  elif(t ==4):
+    c = 4
+  elif(t ==5):
+    c = 5
+  elif(t ==6):
+    c = 6
+  elif(t ==7):
+    c = 7
+  elif(t ==8):
+    c = 8 
+  elif(t ==9):
+    c = 9 
+
+
+
+
+
+
 #Main Main Main
 def main():
     #f = open("crackme.txt")
