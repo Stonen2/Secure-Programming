@@ -50,7 +50,7 @@ def getdictionary():
   with open("/usr/share/dict/words","r") as g:
         text = g.readlines()
         for line in text:
-          dictionary.append(line)
+          dictionary.append(line.rstrip())
 
 #Ballroom blitz?         
 def dictionaryAttack():
@@ -58,6 +58,32 @@ def dictionaryAttack():
   for a in dictionary:
     if(len(a) == 7):
       svnLetters.append(a)
+
+def ruleonedoc(s,count):
+  s.capitalize()
+  if count == 0:
+    s + 0
+  elif count == 1:
+    s + 1
+  elif count ==2:
+    s + 2
+  elif count == 3: 
+    s + 3
+  elif count == 4: 
+    s+4 
+  elif count == 5: 
+    s + 5
+  elif count == 6: 
+    s + 6
+  elif count == 7: 
+    s+ 7
+  elif count == 8: 
+    s + 8
+  else: 
+    s+ 9
+  return s
+  
+  
 
 def cracked(unknown, known): 
   if(encode(known) == unknown):
@@ -81,6 +107,10 @@ def grabTheFile():
             rawdata.append(temp[3])
             
             #rawdata.append(line)
+def firstattack():
+  count = 0: 
+  notcracked = True
+  while(notcracked == True):
     
 
 #Main Main Main
@@ -99,7 +129,8 @@ def main():
     #print(encode("Puzzles4"))
     dictionaryAttack()
 
-    print(svnLetters)
+    #print(svnLetters)
+    #print(dictionary[0].capitalize())
 
     #print(dictionary[1000])
     #print(rawdata)
