@@ -275,6 +275,87 @@ def encodeFor2nd(f,s,t,fo,fi):
   #print(g)
   return g
 
+def thirdattack(unknown):
+  crackedss = False
+  holding = True
+  firstl = 0
+  secondl = 0
+  thirdl = 0 
+  fourthl = 0
+  while(crackedss == False):
+    if(firstl == 5):
+      crackedss = True
+      break
+    gg = encodeforthird(firstl,secondl,thirdl,fourthl)
+    #print(gg)
+    encode(gg)
+    holding = cracked(unknown,gg)
+    if(holding == False):
+      print("Password Cracked "  + gg)
+      break
+    if(fourthl == 5):
+      break
+    
+
+def encodeforthird(o,t,th,f):
+  if(o == 0):
+    a = "*"
+  elif (o ==1):
+    a = "~"
+  elif (o ==2):
+    a = "!"
+  elif(o == 3):
+    a = "#"
+  
+  if(t == 0):
+    b = "*"
+  elif (t ==1):
+    b = "~"
+  elif (t ==2):
+    b = "!"
+  elif(t == 3):
+    b = "#"
+  else:
+    b= ""
+  if(th == 0):
+    c = "*"
+  elif (th ==1):
+    c = "~"
+  elif (th ==2):
+    c = "!"
+  elif(th == 3):
+    c = "#"
+  else: 
+    c=""
+  if(f == 0):
+    d = "*"
+  elif (f ==1):
+    d = "~"
+  elif (f ==2):
+    d = "!"
+  elif(f == 3):
+    d = "#"
+  else: 
+    d =""
+  temp = a + b + c + d 
+  print(temp)
+  return a + b + c + d
+
+
+
+def fourthattack(unknown):
+  correct = True
+  for i in dictionary: 
+    h = i
+    i = i.replace('a','@')
+    i = i.replace('l','1')
+    
+    #print(i)
+    correct = cracked(unknown,i)
+    if(correct == False):
+      print("PAssword is cracked " + i)
+      break
+      
 
 def fifthattack(unknown):
   correct = True
@@ -320,14 +401,25 @@ def main():
 
     #print(rawdata[4])
     secondattack(rawdata[4])
-    print(rawdata[7])
+    #print(rawdata[7])
     #getdictionary()
     #print(encode("programming"))
     sixthattack(rawdata[10])
     #print(encode("93439"))
     #print("\n")
     #print(rawdata[13])
+    #print(rawdata[9])
+    ##print("\n")
+    #print(rawdata[8])
+    print(rawdata[7])
+    fourthattack(rawdata[7])
+    #print("\n")
+    #print(rawdata[5])
     fifthattack(rawdata[13])
+    #print(encode("****"))
+    #print(rawdata[16])
+    thirdattack(rawdata[16])
+    
     #print(svnLetters)
     #print(dictionary[0].capitalize())
 
