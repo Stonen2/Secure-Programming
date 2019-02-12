@@ -3,6 +3,8 @@ import hashlib
 
 rawdata = list()
 dictionary = list()
+svnLetters = list()
+
 
 #def fun1():
  #   mylist = list()
@@ -35,6 +37,13 @@ dictionary = list()
 
   # print(uncrack)
 
+
+def encode(s):
+  #print(s)
+  h = hashlib.sha256(s.encode()).hexdigest()
+  return h
+
+
 #Reads in all of the dictionary into memory  
 def getdictionary():
   #print("Hello World")
@@ -45,7 +54,15 @@ def getdictionary():
 
 #Ballroom blitz?         
 def dictionaryAttack():
-  print("Hello World")  
+  #print("Hello World")  
+  for a in dictionary:
+    if(len(a) == 7):
+      svnLetters.append(a)
+
+def cracked(unknown, known): 
+  if(encode(known) == unknown):
+      print("SUCCESS")
+
 
 #Prints the given array Nothin special 
 def printarray(list):
@@ -79,6 +96,11 @@ def main():
     grabTheFile()
     printarray(rawdata)
     getdictionary()
+    #print(encode("Puzzles4"))
+    dictionaryAttack()
+
+    print(svnLetters)
+
     #print(dictionary[1000])
     #print(rawdata)
     
