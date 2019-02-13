@@ -90,7 +90,7 @@ def ruleonedoc(s,count):
 
 def cracked(unknown, known): 
   if(encode(known) == unknown):
-      print("YOu have cracked a password")
+      print("YOu have cracked a password and the password was " + known)
       return False
   else: 
     return True 
@@ -101,7 +101,7 @@ def printarray(list):
       print(i)
 #Open the Users and Passwords to CRACK 
 def grabTheFile():
-    with open("crackme.txt","r") as g:
+    with open("password.txt","r") as g:
         text = g.readlines()
         for line in text:
             temp = line.split(':')
@@ -109,7 +109,7 @@ def grabTheFile():
             #print(line)
             rawdata.append(temp[0])
             rawdata.append(temp[1])
-            rawdata.append(temp[3])
+            #rawdata.append(temp[3])
             
             #rawdata.append(line)
 def decode(s):
@@ -421,69 +421,71 @@ def runAllAttacksAtOnce():
   count = 1 
   userTracker = 0
   temporary = len(rawdata)
-  print(temporary) 
+  #print(temporary) 
   while(temporary > count):
     PasswordHacked = True
     #print(rawdata[count])
-    print("\n")
+    #print("\n")
     #print(rawdata[userTracker])
-    print("\n")
-    print(rawdata[count])
-    print("\n")
-    print(PasswordHacked)
+    #print("\n")
+    #print(rawdata[count])
+   # print("\n")
+    #print(PasswordHacked)
     PasswordHacked = firstattack(rawdata[count])
     if(PasswordHacked == False):
-      print("CRACKED CRACKED CRACKED")
+      print("First level You have cracked " + rawdata[userTracker])
       print(rawdata[userTracker])
-      userTracker = userTracker + 3  
-      count = count + 3
+      userTracker = userTracker + 2  
+      count = count + 2
       passwordHacked = False
-      print("LOOP BACK")
+      #print("LOOP BACK")
     else: 
-      print("First attack failed")
+      #print("First attack failed")
       PasswordHacked = secondattack(rawdata[count])
       if(PasswordHacked == False):
-        print("CRACKED CRACKED CRACKED")
+        print("Second Leve You have cracked " + rawdata[userTracker])
         print(rawdata[userTracker])
-        userTracker = userTracker + 3  
-        count = count + 3
+        userTracker = userTracker + 2  
+        count = count + 2
         
       else:
-        print("Second Attack Failed")
+        #print("Second Attack Failed")
         PasswordHacked = thirdattack(rawdata[count])
         
         if(PasswordHacked == False):
-          print("CRACKED CRACKED CRACKED")
+          print("Level three You have cracked " + rawdata[userTracker])
           print(rawdata[userTracker])
-          userTracker = userTracker + 3  
-          count = count + 3
+          userTracker = userTracker + 2  
+          count = count + 2
         else: 
-          print("Third Attack Failed")
+          #print("Third Attack Failed")
           PasswordHacked = fourthattack(rawdata[count])
           if(PasswordHacked == False):
-            print("CRACKED CRACKED CRACKED")
+            print("Level four you have cracked " + rawdata[userTracker])
             print(rawdata[userTracker])
-            userTracker = userTracker + 3  
-            count = count + 3
+            userTracker = userTracker + 2  
+            count = count + 2
           else: 
-            print("Fourth attack failed")
+            #print("Fourth attack failed")
             PasswordHacked = fifthattack(rawdata[count])
             if(PasswordHacked == False):
-              print("CRACKED CRACKED CRACKED")
+              print("level five You have cracked " + rawdata[userTracker])
               print(rawdata[userTracker])
-              userTracker = userTracker + 3  
-              count = count + 3
+              userTracker = userTracker + 2  
+              count = count + 2
             else: 
-                print("Ffifth attack Failed")
+                #print("Ffifth attack Failed")
                 PasswordHacked = sixthattack(rawdata[count])
                 if(PasswordHacked == False):
-                  print("CRACKED CRACKED CRACKED")
+                  print("You have cracked " + rawdata[userTracker])
                   print(rawdata[userTracker])
-                  userTracker = userTracker + 3  
-                  count = count + 3
+                  userTracker = userTracker + 2  
+                  count = count + 2
                 else: 
                   print("All Failed")
-                  print("A password was not Cracked")
+                  #print("A password was not Cracked")
+                  userTracker = userTracker + 2
+                  count = count + 2
 
 
 
