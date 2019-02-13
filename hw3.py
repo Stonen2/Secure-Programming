@@ -544,17 +544,26 @@ def runAllAttacksAtOnce():
                     userTracker = userTracker + 2
                     count = count + 2
 
+#Every time we crack a program hash then we are going to call this function 
+#By doing this we are going to store the hash and corresponding password
+#in this file 
 def writeout(encr,password): 
   f = open("myfile.txt", "a")
   f.write("The encrypted pass word was " + encr + " The plain text is " + password + "\n")
 
 
+#The main does all of the heavy lifting
+#This starts by parsing the user data file into memory
+#Then it loads all of the dictionary words into memory
+#then it will parse all of the 7 character dictionary words into memory
+#Then it will call the function to start attacking all of the passwords
 
 def main():
     grabTheFile()
     getdictionary()
     dictionaryAttack()
     runAllAttacksAtOnce()
+
 
 
 main()
