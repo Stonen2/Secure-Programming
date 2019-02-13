@@ -112,7 +112,10 @@ def firstattack(unknown):
     break
   return True
 
-
+#this will take 5 counters and will increment them based on the number that we are trying
+#to guess. If the guess it not correct we will increment the number by 1 and then recode
+#the number into its string equivalent and then we will encode this number and test it
+#The first character is a special character the last 4 are digits. 
 def secondattack(unknown):
   firstlayer = 0
   secondlayer = 0
