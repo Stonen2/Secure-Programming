@@ -6,56 +6,19 @@ dictionary = list()
 svnLetters = list()
 
 
-#def fun1():
- #   mylist = list()
- #   with open("crackme.txt") as f:
-  #      for line in f:
- #           mylist(line)
- #   return mylist
-#def test():
-   # print('hello world')
-
- #   uncrack = list() 
-  #  userhashes = list()
-   # usernames = list() 
-
-
-
-
-#    file = open("crackme.txt","r")
-
- #   print(file)
-#
-
-   # print(file.readline())
-
-
-   # file.close
-
-   # uncrack = fun1()
-  #  print("   \n")
-
-  # print(uncrack)
-def runallAttacks():
-  print("Swag on Full Attack")
-
 def encode(s):
-  #print(s)
   h = hashlib.sha256(s.encode()).hexdigest()
   return h
 
 
 #Reads in all of the dictionary into memory  
 def getdictionary():
-  #print("Hello World")
   with open("/usr/share/dict/words","r") as g:
         text = g.readlines()
         for line in text:
           dictionary.append(line.rstrip())
-
-#Ballroom blitz?         
-def dictionaryAttack():
-  #print("Hello World")  
+        
+def dictionaryAttack():  
   for a in dictionary:
     if(len(a) == 7):
       svnLetters.append(a)
@@ -95,37 +58,24 @@ def cracked(unknown, known):
   else: 
     return True 
 
-#Prints the given array Nothin special 
-def printarray(list):
-  for i in list: 
-      print(i)
 #Open the Users and Passwords to CRACK 
 def grabTheFile():
     with open("password.txt","r") as g:
         text = g.readlines()
         for line in text:
             temp = line.split(':')
-
-            #print(line)
             rawdata.append(temp[0])
             rawdata.append(temp[1])
-            #rawdata.append(temp[3])
-            
-            #rawdata.append(line)
-def decode(s):
-  m = hashlib.sha256()
-  s.decode()
-  return s
+
+
 def firstattack(unknown):
   count = 0
   notcracked = True
   done = False
   while(notcracked == True):
-    
     for i in svnLetters:
       while(count < 10):
         s = ruleonedoc(i,count)
-        #print(s)
         notcracked = cracked(unknown,s)
         if(notcracked == False):
           return False
@@ -133,8 +83,6 @@ def firstattack(unknown):
           count = 100
           done = True
           break
-          #a = decode(s)
-          #print()
         count = count + 1 
       if(done == True):
         notcracked = False
@@ -152,14 +100,11 @@ def secondattack(unknown):
   fifthlayer = 0 
   crackedss = False
   holding = True
-  #gg = encodeFor2nd(0,0,0,0,0)
-  #print(gg)
   while(crackedss == False):
     if(firstlayer == 5):
       crackedss = True
       break
     gg = encodeFor2nd(firstlayer,secondlayer,thirdlayer,fourthlayer,fifthlayer)
-    #print(gg)
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
@@ -181,9 +126,8 @@ def secondattack(unknown):
             secondlayer = 0
             if(firstlayer == 5):
               break
-              #notfound = true
 
-    #crackedss = True
+    
   return True
 
 def encodeFor2nd(f,s,t,fo,fi):
@@ -284,7 +228,6 @@ def encodeFor2nd(f,s,t,fo,fi):
   elif(fi ==9):
     e = "9" 
   g = a + b + c + d + e
-  #print(g)
   return g
 
 def thirdattack(unknown):
@@ -340,9 +283,6 @@ def thirdattack(unknown):
                       print("FUNCTION DONE")
                       crackedss = True
                       break
-
-
-    
   return True  
 
 def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
@@ -395,11 +335,6 @@ def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
     d = "#"
   elif(fl == 4): 
     d =""
-
-
-
-
-
   if(fiv ==0):
     e = "0"
   elif(fiv ==1):
@@ -484,19 +419,8 @@ def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
   elif(eig ==9):
     h = "9" 
 
-
-
-
-
-
-
   temp = a + b + c + d + e + f + g + h  
-  #print(temp)
-  #if(temp == "!#~!3313"):
-  #  print("YO YO YO ")
   return temp 
-
-
 
 def fourthattack(unknown):
   correct = True
@@ -504,8 +428,7 @@ def fourthattack(unknown):
     h = i
     i = i.replace('a','@')
     i = i.replace('l','1')
-    
-    #print(i)
+
     correct = cracked(unknown,i)
     if(correct == False):
       return False
@@ -519,7 +442,6 @@ def fifthattack(unknown):
   number = 0
   while(number < 999999):
     j = str(number)
-    #print(i)
     correct = cracked(unknown,str(number))
     
     if(correct == False):
@@ -547,13 +469,6 @@ def runAllAttacksAtOnce():
   #print(temporary) 
   while(temporary > count):
     PasswordHacked = True
-    #print(rawdata[count])
-    #print("\n")
-    #print(rawdata[userTracker])
-    #print("\n")
-    #print(rawdata[count])
-   # print("\n")
-    #print(PasswordHacked)
     PasswordHacked = firstattack(rawdata[count])
     if(PasswordHacked == False):
       print("First level You have cracked " + rawdata[userTracker])
@@ -610,71 +525,16 @@ def runAllAttacksAtOnce():
                     userTracker = userTracker + 2
                     count = count + 2
 
-
-
-    
-    
 def writeout(): 
   print("Just Temporary")
 
 
 def main():
-    #f = open("crackme.txt")
-    #text = f.readlines()
-    #print(f.readline())
-    #rawdata = f.readline()
-    #for l in text:
-    #    rawdata = f.readline()
-    
-    #f.close
     grabTheFile()
-    #printarray(rawdata)
     getdictionary()
-    #print(encode("Puzzles4"))
     dictionaryAttack()
-    #print(rawdata[1])
-    
     runAllAttacksAtOnce()
-   # firstattack(rawdata[1])
-    #print(encode("~0011"))
 
-    #print(rawdata[4])
-    #secondattack(rawdata[4])
-    #print(rawdata[7])
-    #getdictionary()
-    #print(encode("programming"))
-    #sixthattack(rawdata[10])
-    #print(encode("93439"))
-    #print("\n")
-    #print(rawdata[13])
-    #print(rawdata[9])
-    ##print("\n")
-    #print(rawdata[8])
-    #print(rawdata[7])
-    #fourthattack(rawdata[7])
-    #print("\n")
-    #print(rawdata[5])
-    #fifthattack(rawdata[13])
-    #print(encode("****"))
-    #print(rawdata[16])
-    #thirdattack(rawdata[16])
-    
-    #print(svnLetters)
-    #print(dictionary[0].capitalize())
-
-    #print(dictionary[1000])
-    #print(rawdata)
-    
-   # for line4 in rawdata:
-   #     print(line4)
-
-    #m = hashlib.sha256()
-    #m.update("hello world")
-    #m.hexdigest()
-
-   
-    #for s in rawdata:
-    #    print(s)
 
 
 main()
