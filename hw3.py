@@ -1,28 +1,42 @@
+#Created By Nick Stone
+#2/10/19
+
 import hashlib
 
-
+#These are global lists of Data
+#Basically I throw Dictionary 7 letter dictionary words
+#and all of the user data into memory and manipulate it from there
 rawdata = list()
 dictionary = list()
 svnLetters = list()
 
-
+#a simple encode function that will take in a string and return the 
+#Sha 256 hash version of the String given 
 def encode(s):
   h = hashlib.sha256(s.encode()).hexdigest()
   return h
 
 
 #Reads in all of the dictionary into memory  
+#Point of this is to then poise the data dictionary
+#to be able to be used for multiple attacks
+#Read in the dictionary ONLY ONE TIME
 def getdictionary():
   with open("/usr/share/dict/words","r") as g:
         text = g.readlines()
         for line in text:
           dictionary.append(line.rstrip())
         
+#This function will seperate every 7 letter word into 
+#a seperate list to then be used 
 def dictionaryAttack():  
   for a in dictionary:
     if(len(a) == 7):
       svnLetters.append(a)
 
+#This function will change the String given for the first dictionary 
+#Atttack and will make the first letter capitalized as well as 
+#add the numnbers 0 -9 in that order to the word
 def ruleonedoc(s,count):
   s = s.capitalize()
 
@@ -46,19 +60,22 @@ def ruleonedoc(s,count):
     s=s + '8'
   elif count == 9: 
     s=s+ '9'
-  #print(s)
   return s
   
   
-
+#THis function takes in the known password to guess and the unknown hash value
+#THen we encrypt the known password and then we compare
+#We do this in order to maintain the identity of the password that we guess
 def cracked(unknown, known): 
   if(encode(known) == unknown):
       print("YOu have cracked a password and the password was " + known)
+      writeout(unknown, known)
       return False
   else: 
     return True 
 
-#Open the Users and Passwords to CRACK 
+#Open the Users and Passwords and we extract the username and encrypted hash
+#Put these values in a specific sequence to be used again as a global variable
 def grabTheFile():
     with open("password.txt","r") as g:
         text = g.readlines()
@@ -66,6 +83,8 @@ def grabTheFile():
             temp = line.split(':')
             rawdata.append(temp[0])
             rawdata.append(temp[1])
+
+
 
 
 def firstattack(unknown):
@@ -525,8 +544,10 @@ def runAllAttacksAtOnce():
                     userTracker = userTracker + 2
                     count = count + 2
 
-def writeout(): 
-  print("Just Temporary")
+def writeout(encr,password): 
+  f = open("myfile.txt", "a")
+  f.write("The encrypted pass word was " + encr + " The plain text is " + password + "\n")
+
 
 
 def main():
@@ -534,7 +555,6 @@ def main():
     getdictionary()
     dictionaryAttack()
     runAllAttacksAtOnce()
-
 
 
 main()
