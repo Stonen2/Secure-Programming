@@ -573,16 +573,7 @@ def runAllAttacksAtOnce():
         
       else:
         #print("Second Attack Failed")
-        PasswordHacked = thirdattack(rawdata[count])
         
-        if(PasswordHacked == False):
-          print("\n")
-          print("YO YO YO WE HAVE A MAJOR PROBLEM CAP")
-          print("Level three You have cracked " + rawdata[userTracker])
-          print(rawdata[userTracker])
-          userTracker = userTracker + 2  
-          count = count + 2
-        else: 
           #print("Third Attack Failed")
           PasswordHacked = fourthattack(rawdata[count])
           if(PasswordHacked == False):
@@ -606,11 +597,18 @@ def runAllAttacksAtOnce():
                   print(rawdata[userTracker])
                   userTracker = userTracker + 2  
                   count = count + 2
+                  
                 else: 
-                  print("All Failed")
-                  #print("A password was not Cracked")
-                  userTracker = userTracker + 2
-                  count = count + 2
+                  PasswordHacked = thirdattack(rawdata[count])
+                  if(PasswordHacked == False):
+                    print("Third Level Cracked" + rawdata[userTracker])
+                    userTracker = userTracker + 2
+                    count = count + 2
+                  else:
+                    print("All Failed")
+                    #print("A password was not Cracked")
+                    userTracker = userTracker + 2
+                    count = count + 2
 
 
 
