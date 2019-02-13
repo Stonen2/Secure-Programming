@@ -125,6 +125,7 @@ def firstattack(unknown):
     for i in svnLetters:
       while(count < 10):
         s = ruleonedoc(i,count)
+        #print(s)
         notcracked = cracked(unknown,s)
         if(notcracked == False):
           return False
@@ -136,8 +137,10 @@ def firstattack(unknown):
           #print()
         count = count + 1 
       if(done == True):
+        notcracked = False
         break
       count = 0
+    break
   return True
 
 
@@ -184,6 +187,12 @@ def secondattack(unknown):
   return True
 
 def encodeFor2nd(f,s,t,fo,fi):
+  a = ""
+  b = ""
+  c = ""
+  d = ""
+  e = ""
+  g= ""
   if(f == 0):
     a = "*"
   elif (f ==1):
@@ -297,11 +306,30 @@ def thirdattack(unknown):
       return False
       print("Password Cracked "  + gg)
       break
-    if(fourthl == 5):
-      break
+    else:
+      fourthl = fourthl + 1
+      if(fourthl == 6):
+        thirdl = thirdl + 1
+        fourthl = 0
+        if(thirdl == 6):
+          secondl = secondl + 1
+          thirdl = 0 
+          if(secondl == 6):
+            firstl = firstl + 1
+            secondl = 0 
+            if(firstl == 5):
+              break 
+
+
+    
   return True  
 
 def encodeforthird(o,t,th,f):
+  a = ""
+  b = ""
+  c = ""
+  d = ""
+  temp = ""
   if(o == 0):
     a = "*"
   elif (o ==1):
@@ -342,7 +370,7 @@ def encodeforthird(o,t,th,f):
   else: 
     d =""
   temp = a + b + c + d 
-  print(temp)
+  #print(temp)
   return a + b + c + d
 
 
@@ -400,12 +428,66 @@ def runAllAttacksAtOnce():
     print("\n")
     #print(rawdata[userTracker])
     print("\n")
-    PasswordHacked = firstattack(rawdata[1])
+    print(rawdata[count])
+    print("\n")
+    print(PasswordHacked)
+    PasswordHacked = firstattack(rawdata[count])
     if(PasswordHacked == False):
       print("CRACKED CRACKED CRACKED")
+      print(rawdata[userTracker])
+      userTracker = userTracker + 3  
+      count = count + 3
+      passwordHacked = False
+      print("LOOP BACK")
+    else: 
+      print("First attack failed")
+      PasswordHacked = secondattack(rawdata[count])
+      if(PasswordHacked == False):
+        print("CRACKED CRACKED CRACKED")
+        print(rawdata[userTracker])
+        userTracker = userTracker + 3  
+        count = count + 3
+        
+      else:
+        print("Second Attack Failed")
+        PasswordHacked = thirdattack(rawdata[count])
+        
+        if(PasswordHacked == False):
+          print("CRACKED CRACKED CRACKED")
+          print(rawdata[userTracker])
+          userTracker = userTracker + 3  
+          count = count + 3
+        else: 
+          print("Third Attack Failed")
+          PasswordHacked = fourthattack(rawdata[count])
+          if(PasswordHacked == False):
+            print("CRACKED CRACKED CRACKED")
+            print(rawdata[userTracker])
+            userTracker = userTracker + 3  
+            count = count + 3
+          else: 
+            print("Fourth attack failed")
+            PasswordHacked = fifthattack(rawdata[count])
+            if(PasswordHacked == False):
+              print("CRACKED CRACKED CRACKED")
+              print(rawdata[userTracker])
+              userTracker = userTracker + 3  
+              count = count + 3
+            else: 
+                print("Ffifth attack Failed")
+                PasswordHacked = sixthattack(rawdata[count])
+                if(PasswordHacked == False):
+                  print("CRACKED CRACKED CRACKED")
+                  print(rawdata[userTracker])
+                  userTracker = userTracker + 3  
+                  count = count + 3
+                else: 
+                  print("All Failed")
+                  print("A password was not Cracked")
 
-    userTracker = userTracker + 3  
-    count = count + 3
+
+
+    
     
 def writeout(): 
   print("Just Temporary")
