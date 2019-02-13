@@ -294,12 +294,19 @@ def thirdattack(unknown):
   secondl = 0
   thirdl = 0 
   fourthl = 0
+  fivel = 0 
+  sixl = 0 
+  sevenl = 0 
+  eightl = 0 
   while(crackedss == False):
     if(firstl == 5):
       crackedss = True
       break
-    gg = encodeforthird(firstl,secondl,thirdl,fourthl)
+    gg = encodeforthird(firstl,secondl,thirdl,fourthl,fivel,sixl,sevenl,eightl)
     #print(gg)
+    if(gg == 9999):
+      crackedss = True
+      break
     encode(gg)
     holding = cracked(unknown,gg)
     if(holding == False):
@@ -307,28 +314,46 @@ def thirdattack(unknown):
       print("Password Cracked "  + gg)
       break
     else:
-      fourthl = fourthl + 1
-      if(fourthl == 6):
-        thirdl = thirdl + 1
-        fourthl = 0
-        if(thirdl == 6):
-          secondl = secondl + 1
-          thirdl = 0 
-          if(secondl == 6):
-            firstl = firstl + 1
-            secondl = 0 
-            if(firstl == 5):
-              break 
+      eightl = eightl + 1
+      if(eightl == 10):
+        eightl = 0 
+        sevenl = sevenl + 1
+        if(sevenl == 10):
+          sevenl = 0 
+          sixl = sixl +1 
+          if(sixl == 10):
+            sixl = 0
+            fivel = fivel + 1
+            if(fivel == 10):
+              fivel = 0
+              fourthl = fourthl + 1
+              if(fourthl == 5):
+                fourthl = 0
+                thirdl = thirdl + 1
+                if(thirdl == 5):
+                  thirdl = 0
+                  secondl = secondl + 1
+                  if(secondl == 5):
+                    secondl = 0
+                    firstl = firstl + 1
+                    if(firstl == 5 ):
+                      print("FUNCTION DONE")
+                      crackedss = True
+                      break
 
 
     
   return True  
 
-def encodeforthird(o,t,th,f):
+def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
   a = ""
   b = ""
   c = ""
   d = ""
+  e = ""
+  f = ""
+  g = ""
+  h = ""
   temp = ""
   if(o == 0):
     a = "*"
@@ -338,7 +363,8 @@ def encodeforthird(o,t,th,f):
     a = "!"
   elif(o == 3):
     a = "#"
-  
+  elif(o == 4):
+    a = ""
   if(t == 0):
     b = "*"
   elif (t ==1):
@@ -347,7 +373,7 @@ def encodeforthird(o,t,th,f):
     b = "!"
   elif(t == 3):
     b = "#"
-  else:
+  elif(t == 4):
     b= ""
   if(th == 0):
     c = "*"
@@ -357,21 +383,118 @@ def encodeforthird(o,t,th,f):
     c = "!"
   elif(th == 3):
     c = "#"
-  else: 
+  elif(th == 4): 
     c=""
-  if(f == 0):
+  if(fl == 0):
     d = "*"
-  elif (f ==1):
+  elif (fl ==1):
     d = "~"
-  elif (f ==2):
+  elif (fl ==2):
     d = "!"
-  elif(f == 3):
+  elif(fl == 3):
     d = "#"
-  else: 
+  elif(fl == 4): 
     d =""
-  temp = a + b + c + d 
+
+
+
+
+
+  if(fiv ==0):
+    e = "0"
+  elif(fiv ==1):
+    e = "1"
+  elif(fiv ==2):
+    e = "2"
+  elif(fiv ==3):
+    e = "3"
+  elif(fiv ==4):
+    e = "4"
+  elif(fiv ==5):
+    e = "5"
+  elif(fiv ==6):
+    e = "6"
+  elif(fiv ==7):
+    e = "7"
+  elif(fiv ==8):
+    e = "8" 
+  elif(fiv ==9):
+    e = "9"
+
+  if(six ==0):
+    f = "0"
+  elif(six ==1):
+    f = "1"
+  elif(six ==2):
+    f = "2"
+  elif(six ==3):
+    f = "3"
+  elif(six ==4):
+    f = "4"
+  elif(six ==5):
+    f = "5"
+  elif(six ==6):
+    f = "6"
+  elif(six ==7):
+    f = "7"
+  elif(six ==8):
+    f = "8" 
+  elif(six ==9):
+    f = "9" 
+  ###########
+  if(sev ==0):
+    g = "0"
+  elif(sev ==1):
+    g = "1"
+  elif(sev ==2):
+    g = "2"
+  elif(sev ==3):
+    g = "3"
+  elif(sev ==4):
+    g = "4"
+  elif(sev ==5):
+    g = "5"
+  elif(sev ==6):
+    g = "6"
+  elif(sev ==7):
+    g = "7"
+  elif(sev ==8):
+    g = "8" 
+  elif(sev ==9):
+    g = "9" 
+  ############
+  if(eig ==0):
+    h = "0"
+  elif(eig ==1):
+    h = "1"
+  elif(eig ==2):
+    h = "2"
+  elif(eig ==3):
+    h = "3"
+  elif(eig ==4):
+    h = "4"
+  elif(eig ==5):
+    h = "5"
+  elif(eig ==6):
+    h = "6"
+  elif(eig ==7):
+    h = "7"
+  elif(eig ==8):
+    h = "8" 
+  elif(eig ==9):
+    h = "9" 
+
+
+
+
+
+
+
+  temp = a + b + c + d + e + f + g + h  
   #print(temp)
-  return a + b + c + d
+  #if(temp == "!#~!3313"):
+  #  print("YO YO YO ")
+  return temp 
 
 
 
@@ -453,6 +576,8 @@ def runAllAttacksAtOnce():
         PasswordHacked = thirdattack(rawdata[count])
         
         if(PasswordHacked == False):
+          print("\n")
+          print("YO YO YO WE HAVE A MAJOR PROBLEM CAP")
           print("Level three You have cracked " + rawdata[userTracker])
           print(rawdata[userTracker])
           userTracker = userTracker + 2  
