@@ -68,7 +68,7 @@ def ruleonedoc(s,count):
 #We do this in order to maintain the identity of the password that we guess
 def cracked(unknown, known): 
   if(encode(known) == unknown):
-      print("YOu have cracked a password and the password was " + known)
+      print("You have cracked a password and the password was " + known)
       writeout(unknown, known)
       return False
   else: 
@@ -86,7 +86,9 @@ def grabTheFile():
 
 
 
-
+#This first attack will take in every seven letter word in the dictionary which
+#we have in its own list. We then add every number 0 -9 and try each of those words
+#against the unknown password. This is done for every seven letter word in the dictionary
 def firstattack(unknown):
   count = 0
   notcracked = True
@@ -148,7 +150,9 @@ def secondattack(unknown):
 
     
   return True
-
+#This takes in five counter variables from the second attack function
+#Each of these variables will result in a string being returned that will be based
+#On the numbers that are taken in 
 def encodeFor2nd(f,s,t,fo,fi):
   a = ""
   b = ""
@@ -249,6 +253,14 @@ def encodeFor2nd(f,s,t,fo,fi):
   g = a + b + c + d + e
   return g
 
+
+#This will generate unique 8 digit numbers and will send these numbers to the encode third 
+#Function that is listed lower in this file. Thus the process is that it will create a possible
+#password and will try to crack this password if it is not correct it will try the next until 
+#all of the passwords have been guessed from ####0000 - 9999 Thus being that their are no unique
+#special characters in the front of the password
+#THis is a series of if statements that check when each of the next level of counters needs
+#to be incremented
 def thirdattack(unknown):
   crackedss = False
   holding = True
@@ -273,7 +285,7 @@ def thirdattack(unknown):
     holding = cracked(unknown,gg)
     if(holding == False):
       return False
-      print("Password Cracked "  + gg)
+      #print("Password Cracked "  + gg)
       break
     else:
       eightl = eightl + 1
@@ -299,11 +311,16 @@ def thirdattack(unknown):
                     secondl = 0
                     firstl = firstl + 1
                     if(firstl == 5 ):
-                      print("FUNCTION DONE")
+                      #print("FUNCTION DONE")
                       crackedss = True
                       break
   return True  
 
+
+#This process works very similarly to the  second encoding proces
+#Every number will have a corresponding character that will be associated with the series
+#of numbers that will be input then it will concatonate all of the characters and numbers
+#together and will return this variable 
 def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
   a = ""
   b = ""
@@ -441,6 +458,10 @@ def encodeforthird(o,t,th,fl,fiv,six,sev,eig):
   temp = a + b + c + d + e + f + g + h  
   return temp 
 
+
+#Takes every word in the dictionary and will change the word to make all of the a character
+#THe @ and change all of the ls to be 1s 
+#This calls the dictionary global variable 
 def fourthattack(unknown):
   correct = True
   for i in dictionary: 
@@ -455,7 +476,9 @@ def fourthattack(unknown):
       break
   return True
       
-
+#This is the fifth rule. We  need to be able to crack any 6 digit or less than 6 digit
+#Password So this is a simple loop that will try every number from 0 to 999999
+#Will create the number encrypt it compare and then try the next if it does not succeed 
 def fifthattack(unknown):
   correct = True
   number = 0
@@ -470,6 +493,8 @@ def fifthattack(unknown):
     number = number + 1
   return True
 
+#THis function will encode every word in the dictionary and will compare this 
+#TO the hash of the user. 
 def sixthattack(unknown):
   correct = True
   for i in dictionary: 
@@ -479,7 +504,11 @@ def sixthattack(unknown):
       return False
       print("PAssword is cracked " + i)
    
-#Main Main Main
+
+#Logical sequence that will take in every users hash and every users name
+#THis will then test the first rule against this if it fails it will move onto 
+#the second rule and will continue this sequence until all of the rules have been run
+#If no attack runs the password is not crackable and goes to the next user in the list
 
 def runAllAttacksAtOnce(): 
   count = 1 
@@ -490,8 +519,8 @@ def runAllAttacksAtOnce():
     PasswordHacked = True
     PasswordHacked = firstattack(rawdata[count])
     if(PasswordHacked == False):
-      print("First level You have cracked " + rawdata[userTracker])
-      print(rawdata[userTracker])
+      #print("First level You have cracked " + rawdata[userTracker])
+      #print(rawdata[userTracker])
       userTracker = userTracker + 2  
       count = count + 2
       passwordHacked = False
@@ -500,8 +529,8 @@ def runAllAttacksAtOnce():
       #print("First attack failed")
       PasswordHacked = secondattack(rawdata[count])
       if(PasswordHacked == False):
-        print("Second Leve You have cracked " + rawdata[userTracker])
-        print(rawdata[userTracker])
+       # print("Second Leve You have cracked " + rawdata[userTracker])
+       # print(rawdata[userTracker])
         userTracker = userTracker + 2  
         count = count + 2
         
@@ -511,35 +540,35 @@ def runAllAttacksAtOnce():
           #print("Third Attack Failed")
           PasswordHacked = fourthattack(rawdata[count])
           if(PasswordHacked == False):
-            print("Level four you have cracked " + rawdata[userTracker])
-            print(rawdata[userTracker])
+           # print("Level four you have cracked " + rawdata[userTracker])
+            #print(rawdata[userTracker])
             userTracker = userTracker + 2  
             count = count + 2
           else: 
             #print("Fourth attack failed")
             PasswordHacked = fifthattack(rawdata[count])
             if(PasswordHacked == False):
-              print("level five You have cracked " + rawdata[userTracker])
-              print(rawdata[userTracker])
+              #print("level five You have cracked " + rawdata[userTracker])
+              #print(rawdata[userTracker])
               userTracker = userTracker + 2  
               count = count + 2
             else: 
                 #print("Ffifth attack Failed")
                 PasswordHacked = sixthattack(rawdata[count])
                 if(PasswordHacked == False):
-                  print("You have cracked " + rawdata[userTracker])
-                  print(rawdata[userTracker])
+                  #print("You have cracked " + rawdata[userTracker])
+                  #print(rawdata[userTracker])
                   userTracker = userTracker + 2  
                   count = count + 2
                   
                 else: 
                   PasswordHacked = thirdattack(rawdata[count])
                   if(PasswordHacked == False):
-                    print("Third Level Cracked" + rawdata[userTracker])
+                    #print("Third Level Cracked" + rawdata[userTracker])
                     userTracker = userTracker + 2
                     count = count + 2
                   else:
-                    print("All Failed")
+                    #print("All Failed")
                     #print("A password was not Cracked")
                     userTracker = userTracker + 2
                     count = count + 2
