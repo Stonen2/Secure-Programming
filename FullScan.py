@@ -2,11 +2,9 @@
 # Base code by Gary Lewandowski
 #Additional Code to Create a Range of Ports to be scanned 
 # Along with the half scan and the additional use of the 
-
-
 from socket import *
-from scapy.layers.inet import IP, TCP, ICMP
-from scapy.sendrecv import sr 
+import sys 
+
 
 FSOpenPorts = list()
 FSClosedPorts = list()
@@ -20,16 +18,21 @@ FSClosedPorts = list()
 #A full scan is successful during the try Phase
 #THe except statement is the socket unable to connect 
 
+def printfile(port): 
+  f = open("FullScan.txt", "a")
+  f.write("There is an open port and the port number is " + port + "\n")
+
 def FullScanConnectTo(host, port):
   serverName = host
-  serverPort = port
+  serverPort = str(port)
   clientSocket = socket(AF_INET,SOCK_STREAM)
   clientSocket.settimeout(1)
   try:
     clientSocket.connect((serverName,serverPort))
     clientSocket.close()
-    FSopenPorts.append(serverPort)
-    print("Connection")
+    #FSopenPorts.append(serverPort)
+    printfile(serverPort)
+    print("Port is open")
     return True
   except Exception as e:
     # didn't connect
@@ -41,18 +44,19 @@ def FullScanConnectTo(host, port):
 # Parameters ipad,begport, endport
 def main(ipad, begport, endport): 
     counter = 0 
-    i = begport 
-    j = endport 
+    i = int(begport) 
+    j = int(endport) 
+    #print(j)
 
     while(i < j):
         #This contacts the full scan
         FullScanConnectTo(ipad,i)
-
+        #print("Scanning port" + str(i))
 
         i = i + 1
-        print(i)
+        #print(i)
 # print(FSClosedPorts)
-    print(FSOpenPorts)
+    #print(FSOpenPorts)
 
 
     #print(FullScanConnectTo("10.253.250.9", 80))
@@ -61,6 +65,8 @@ def main(ipad, begport, endport):
 
 
 
-
-
-main("10.253.250.9",8080,8240)
+ip = sys.argv[1]
+begp = sys.argv[2]
+endp = sys.argv[3]
+#print(ip, begp, endp)
+main(ip,begp,endp)
