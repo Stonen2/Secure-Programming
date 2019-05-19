@@ -1,0 +1,24 @@
+There is an open port and the port number is 22
+There is an open port and the port number is 22
+There is an open port and the port number is 25
+There is an open port and the port number is 13
+There is an open port and the port number is 22
+There is an open port and the port number is 25
+The IP Address10.253.250.9has an open port and the port number is 13
+The IP Address10.253.250.9has an open port and the port number is 22
+The IP Address10.253.250.9has an open port and the port number is 25
+The IP Address10.253.250.9 has an open port and the port number is 22
+The IP Address10.253.250.9 has an open port and the port number is 25
+The IP Address10.253.250.9 has an open port and the port number is 13
+The IP Address10.253.250.9 has an open port and the port number is 22
+The IP Address10.253.250.9 has an open port and the port number is 25
+The IP Address10.253.250.9 has an open port and the port number is 13
+The IP Address10.253.250.9 has an open port and the port number is 22
+The IP Address10.253.250.9 has an open port and the port number is 25
+The IP Address134.209.170.42 has an open port and the port number is 9
+The IP Address134.209.170.42 has an open port and the port number is 22
+The IP Address134.209.170.42 has an open port and the port number is 80
+The IP Address134.209.170.42 has an open port and the port number is 9
+The IP Address134.209.170.42 has an open port and the port number is 22
+The IP Address134.209.170.42 has an open port and the port number is 80
+The IP Address134.209.170.42 has an open port and the port number is 3001

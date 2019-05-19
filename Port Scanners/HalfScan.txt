@@ -1,0 +1,40 @@
+There is an open port and the port number is 80T his is what Nmap Says about the Portnameserver	42/tcp	0.000803	# name | Host Name Server
+
+There is an open port and the port number is 143T his is what Nmap Says about the Porthttp	80/tcp	0.484143	# World Wide Web HTTP
+
+There is an open port and the port number is 25T his is what Nmap Says about the Portchargen	19/tcp	0.002559	# ttytst source Character Generator | Character Generator
+
+There is an open port and the port number is 13T his is what Nmap Says about the Portcompressnet	2/tcp	0.000013	# Management Utility
+
+There is an open port and the port number is 22T his is what Nmap Says about the Portssh	22/sctp	0.000000	# Secure Shell Login | The Secure Shell (SSH) Protocol
+
+There is an open port and the port number is 110T his is what Nmap Says about the Portpop3	110/tcp	0.077142	# PostOffice V.3 | Post Office Protocol - Version 3
+
+There is an open port and the port number is 22T his is what Nmap Says about the Portssh	22/sctp	0.000000	# Secure Shell Login | The Secure Shell (SSH) Protocol
+
+There is an open port and the port number is 25T his is what Nmap Says about the Portchargen	19/tcp	0.002559	# ttytst source Character Generator | Character Generator
+
+There is an open port and the port number is 13T his is what Nmap Says about the Portcompressnet	2/tcp	0.000013	# Management Utility
+
+There is an open port and the port number is 143T his is what Nmap Says about the Porthttp	80/tcp	0.484143	# World Wide Web HTTP
+
+There is an open port and the port number is 80T his is what Nmap Says about the Portnameserver	42/tcp	0.000803	# name | Host Name Server
+
+There is an open port and the port number is 25T his is what Nmap Says about the Portchargen	19/tcp	0.002559	# ttytst source Character Generator | Character Generator
+
+There is an open port and the port number is 22T his is what Nmap Says about the Portssh	22/sctp	0.000000	# Secure Shell Login | The Secure Shell (SSH) Protocol
+
+There is an open port and the port number is 13T his is what Nmap Says about the Portcompressnet	2/tcp	0.000013	# Management Utility
+
+There is an open port and the port number is 22T his is what Nmap Says about the Portssh	22/sctp	0.000000	# Secure Shell Login | The Secure Shell (SSH) Protocol
+
+There is an open port and the port number is 25T his is what Nmap Says about the Portchargen	19/tcp	0.002559	# ttytst source Character Generator | Character Generator
+
+There is an open port and the port number is 13T his is what Nmap Says about the Portcompressnet	2/tcp	0.000013	# Management Utility
+
+There is an open port and the port number is 22T his is what Nmap Says about the Portssh	22/sctp	0.000000	# Secure Shell Login | The Secure Shell (SSH) Protocol
+
+There is an open port and the port number is 13T his is what Nmap Says about the Portcompressnet	2/tcp	0.000013	# Management Utility
+
+There is an open port and the port number is 25T his is what Nmap Says about the Portchargen	19/tcp	0.002559	# ttytst source Character Generator | Character Generator
+
