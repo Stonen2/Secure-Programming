@@ -18,9 +18,15 @@ def loaddic():
 
 
 def ruleone():
+    a = ''
     for x in range(10):
-      print(random.randint(1,21)*5)
+        c = random.randint(0,9)
+        a = a + str(c)
+        print(c)
+
     print("Working")
+    return a
+
 
 def getdictWords():
     print("Hello World")
@@ -33,13 +39,17 @@ def mutatepass():
 def genpass():
     print("Working")
 
+def ranrule():
+    print("Hello World")
 
 
 def main():
+
     loaddic()
     mutatepass()
     genpass()
-
+    b = ruleone()
+    print(b)
 
     print("Hello Universe")
 
