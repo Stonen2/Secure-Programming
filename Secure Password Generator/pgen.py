@@ -45,10 +45,20 @@ def pickword():
 
 
 def salt(l):
+    n = ''
     if l == 1:
-        print("Hello World")
+
+        for i in range(7):
+            g = random.randint(0,9)
+            n = n + str(g)
+            word = word + n
     else:
-        print("Hello World")
+        for i in range(6):
+            g = random.randint(0,9)
+            n = str(g) + n
+            word = n + word
+    return n
+
 
 def mutatepass():
     print("Working")
@@ -71,27 +81,31 @@ def ranrule():
 
         else:
             print("Rule 3")
+            ll = random.randint(1,2)
+            salt(ll)
+            ru+les.remove(3)
 
 
-
-            rules.remove(3)
-
-
-        print(a)
+def writeout():
+  f = open("SecurePass.txt", "a")
+  f.write("The Secure Password Generated is " + word + "\n")
 
 
 def main():
     rules.append(1)
     rules.append(2)
     rules.append(3)
+    getdictionary()
+    dictionaryAttack()
+
     ranrule()
+    mutatepass()
+    writeout()
     #loaddic()
     #mutatepass()
     #genpass()
-    b = ruleone()
-    getdictionary()
-    dictionaryAttack()
-    print(words)
+    #b = ruleone()
+
 
     #print(b)
 
