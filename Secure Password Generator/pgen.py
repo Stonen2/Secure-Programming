@@ -1,9 +1,9 @@
 import random
 
 
-
-
-
+rules = list()
+dictionary = list()
+words = list()
 #Generate a 20 Character Password
 #Randomly Pick from the 3 Rules such that rules cannot be guessed
 #First Rule pick a 8,9,10 Character Dictionary Password
@@ -13,8 +13,6 @@ import random
 
 
 
-def loaddic():
-    print("Hello World")
 
 
 def ruleone():
@@ -28,7 +26,19 @@ def ruleone():
     return a
 
 
-def getdictWords():
+def getdictionary():
+  with open("/usr/share/dict/words","r") as g:
+        text = g.readlines()
+        for line in text:
+            dictionary.append(line.rstrip())
+
+
+def dictionaryAttack():
+  for a in dictionary:
+    if(len(a) == 8 or len(a) == 9 or len(a) == 10):
+        words.append(a)
+
+def pickword():
     print("Hello World")
 
 
@@ -41,17 +51,27 @@ def genpass():
 
 def ranrule():
     print("Hello World")
+    for x in range(3):
+        a = random.randint(1,len(rules))
+        print(a)
 
 
 def main():
-
-    loaddic()
-    mutatepass()
-    genpass()
+    rules.append(1)
+    rules.append(2)
+    rules.append(3)
+    ranrule()
+    #loaddic()
+    #mutatepass()
+    #genpass()
     b = ruleone()
-    print(b)
+    getdictionary()
+    dictionaryAttack()
+    print(words)
 
-    print("Hello Universe")
+    #print(b)
+
+    #print("Hello Universe")
 
 
 
