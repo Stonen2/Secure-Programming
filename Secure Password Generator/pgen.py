@@ -61,7 +61,27 @@ def salt(l):
 
 
 def mutatepass():
-    print("Working")
+    c = random.randint(0,5)
+    if c == 1:
+
+         word = word.replace('a','@')
+
+    elif c == 2:
+        word = word.replace('o','#')
+
+    elif c == 3:
+        word = word.replace('l','1')
+
+
+    elif c == 4:
+        word = word.replace('s','$')
+
+
+
+    else:
+        word = word.replace('a','@')
+
+
 
 
 
